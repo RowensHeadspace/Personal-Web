@@ -138,7 +138,6 @@ function giveActiveClassToLinks() {
     }
   });
 }
-const nesting = getNesting();
 
 document.addEventListener("DOMContentLoaded", function () {
   loadLayoutByPetraPixel();
