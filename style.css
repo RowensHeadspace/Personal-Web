@@ -95,6 +95,8 @@ header {
   grid-area: header;
   max-width: max-content;
   font-size: 1.2em;
+  width: 300px; /* set a fixed width */
+  margin: 0 auto; /* center horizontally */
   border: var(--border);
   border-radius: var(--round-borders);
   overflow: hidden;
@@ -214,6 +216,8 @@ footer {
   padding: 3px;
   max-width: max-content;
   background: var(--content-background-color);
+  width: 300px; /* set a fixed width */
+  margin: 0 auto; /* center horizontally */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
