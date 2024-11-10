@@ -1,0 +1,186 @@
+@keyframes sprite {
+  0% {
+    margin-top: 0px;
+  }
+  10% {
+    margin-top: -200px;
+  }
+  20% {
+    margin-top: -400px;
+  }
+  30% {
+    margin-top: -600px;
+  }
+  40% {
+    margin-top: -800px;
+  }
+  50% {
+    margin-top: -1000px;
+  }
+  60% {
+    margin-top: -1200px;
+  }
+  100% {
+    margin-top: -1200px;
+  }
+}
+@keyframes jump {
+  0% {
+    margin-bottom: 0;
+  }
+  10% {
+    margin-bottom: 10px;
+  }
+  50% {
+    margin-bottom: 30px;
+  }
+  85% {
+    margin-bottom: 30px;
+  }
+  90% {
+    margin-bottom: 5px;
+  }
+  95% {
+    margin-bottom: 10px;
+  }
+  100% {
+    margin-bottom: 0;
+  }
+}
+@keyframes bounce {
+  0% {
+    margin-bottom: 8px;
+  }
+  90% {
+    margin-bottom: 8px;
+  }
+  95% {
+    margin-bottom: 12px;
+  }
+  100% {
+    margin-bottom: 8px;
+  }
+}
+body {
+  background-color: #000;
+}
+
+@keyframes rain {
+  0% {
+    transform: translateY(0vh);
+  }
+  80% {
+    transform: translateY(90vh);
+  }
+  100% {
+    transform: translateY(90vh);
+  }
+}
+@keyframes drop {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.cloud {
+  --speed: .9s;
+  --delay: 0s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+.cloud .rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-20vh);
+  width: 1px;
+  height: 40px;
+  left: 50%;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4));
+  animation: rain var(--speed) var(--delay) linear 1;
+}
+.cloud .rain:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  top: 30px;
+  left: -9px;
+  width: 8px;
+  height: 8px;
+  box-shadow: -1px 2px 0px -1px rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  animation: drop var(--speed) var(--delay) linear infinite;
+}
+.cloud .rain:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  top: 30px;
+  left: 1px;
+  width: 8px;
+  height: 8px;
+  box-shadow: 1px 2px 0px -1px rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  animation: drop var(--speed) var(--delay) linear infinite;
+}
+
+.bus-stop {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  top: 50%;
+  display: flex;
+  align-items: flex-end;
+  background-color: #266529;
+  box-shadow: 0 0 1px 3000px #000, inset 0 0 50px 40px #000;
+  border-radius: 50%;
+}
+.bus-stop .floor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #32392b;
+  height: 15px;
+  z-index: 1;
+}
+.bus-stop button {
+  background-color: transparent;
+  border: 0;
+  outline: transparent;
+}
+.bus-stop.jump .sign,
+.bus-stop.jump .girls {
+  animation: bounce 2.5s normal 1;
+}
+.bus-stop.jump .totoro {
+  animation: jump 2.5s normal 1;
+}
+.bus-stop.jump .totoro .pixgrid-a .pixgrid-w {
+  animation: sprite 3s steps(1) 1;
+}
+.bus-stop .sign,
+.bus-stop .girls {
+  margin-bottom: 8px;
+}
+.bus-stop .totoro {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+.bus-stop .totoro .pixgrid-a {
+  overflow: hidden;
+  height: 200px;
+  width: 200px;
+}
