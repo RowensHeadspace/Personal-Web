@@ -1,0 +1,346 @@
+
+<!--
+    Hello! Thank you for using this layout. I hope that you have a fun
+    time customizing it to your liking. For your ease of understanding,
+    I have labeled/explained certain things in both the html and css files.
+    Once you understand the structure, feel free to get rid of these comments.
+-->
+<!DOCTYPE html>
+<html>
+    <!-- head -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, inital-scale=1.0">
+        <!-- change the name of the site in the browser tab -->
+        <title> Modern Browser Theme</title>
+        <style>
+            /*
+            --Font--
+            This is the import for the google fonts css api. Changing this may
+            be a bit tricky if you are new to html/css, but if you want to you
+            will have to get the new import url from Google fonts, and change the
+            font family in the html styling in the stylesheet.
+            */
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+            /*
+                I have set up some variables for the colors
+                used throughout the theme. Here, you can easily change
+                the colors/values of multiple elements. These values are
+                reffered to throughout this stylesheet, so please do not
+                change the names of the variables.
+            */
+            :root{
+                --mainColor: #E6E6E9;
+                --accColor1: #A8C8C6;
+                --accColor2: #055F68;
+                --mainText: #1E2019;
+                --accText: #033A3D;
+                --spacing: 15px;
+            }
+
+            *{
+                scrollbar-color: var(--accColor2) var(--mainColor);
+            }
+            a{
+                color: var(--accText);
+            }
+            a:hover{
+                color: var(--accColor2);
+            }
+            a:visited{
+                color: #055F68;
+            }
+
+            html{
+                background-color: var(--mainColor);
+                color: var(--mainText);
+                font-family: "Inter", sans-serif;
+                font-weight: 400;
+                font-size: 1.2em;
+            }
+            body{
+                margin: 0;
+            }
+            main{
+                width: 60%;
+                margin: 0 auto;
+            }
+            svg{
+
+            }
+            #mainGrid{
+                display: grid;
+                grid-template-columns: 15% 70% 15%;
+            }
+            #gridItem1{
+                grid-column: 1/3;
+                grid-row: 1/2;
+                background-color: var(--accColor2);
+            }
+            #gridItem2{
+                background-color: var(--accColor2);
+            }
+            #gridItem3{
+                grid-column: 1/2;
+                grid-row: 2/3;
+                background-color: var(--accColor2);
+            }
+            #gridItem4{
+                grid-column: 2/3;
+                grid-row: 2/3;
+                background-color: var(--accColor2);
+            }
+            #gridItem5{
+                grid-column: 3/4;
+                grid-row: 2/3;
+                background-color: var(--accColor2);
+            }
+            #gridItem6{
+                grid-column: 1/4;
+                grid-row: 3/4;
+                overflow: scroll;
+                max-height: 664px;
+            }
+
+            .navigation{
+                display: flex;
+                flex-direction: row;
+                overflow-x: scroll;
+                max-width: 100%;
+            }
+            .navigation a{
+                display: block;
+                padding: 3px 6px;
+                border: var(--mainColor) 3px solid;
+                border-radius: 6px;
+                min-width: 192px;
+                text-decoration: none;
+                color: var(--mainColor);
+            }
+            .navigation a.active{
+                color: var(--accColor2);
+                background-color: var(--mainColor);
+                border-color: var(--accColor2);
+            }
+            .navigation a.active svg{
+                fill: var(--accColor2);
+            }
+            .navigation svg{
+                float: right;
+            }
+
+            .windowIcons{
+                float: right;
+            }
+            .windowIcons svg{
+                margin: auto 0;
+                padding: 3px;
+            }
+            .navigationIcons{
+                float: left;
+            }
+            .navigationIcons svg{
+                margin: 0;
+            }
+
+            .searchBar{
+                background-color: var(--mainColor);
+                border-radius: 3px;
+                margin: 3px;
+                color: var(--accColor2);
+            }
+            .searchBar svg{
+                float: right;
+            }
+
+            .menuIcons{
+                float: right;
+            }
+            .menuTooltip{
+                position: relative;
+                display: inline-block;
+
+            }
+            .menuTooltip .tooltipText{
+                visibility: hidden;
+                font-size: 1em;
+                width: 168px;
+                position: absolute;
+                z-index: 1;
+                top: 28px;
+                right: 0px;
+                padding: 3px;
+                text-align: center;
+                background-color: var(--accColor2);
+                color: var(--mainColor);
+                border: var(--accColor1) 2px solid;
+                border-radius: 3px;
+            }
+            .menuTooltip .tooltipText a{
+                color: var(--accColor1);
+                text-decoration: none;
+            }
+            .menuTooltip .tooltipText a:hover{
+                color: var(--mainColor);
+            }
+            .menuTooltip .tooltipText a:visited{
+                color: var(--mainColor);
+            }
+            .menuTooltip:hover .tooltipText{
+                visibility: visible;
+            }
+
+            .title{
+                color: var(--accText);
+                font-weight: 700;
+                font-style: italic;
+            }
+            .content{
+                margin: var(--spacing);
+            }
+
+
+            @media (min-height: 750px) and (max-height: 865px){
+                #gridItem6{
+                    max-height: 794px;
+                }
+            }
+        </style>
+    </head>
+    <!-- body -->
+    <body>
+        <!--
+            This layout relies on grid positioning. The mainGrid controls the
+            layout, and each grid item is positioned within it.
+            gridItem1 contains the navigation of the site
+            gridItem2 contains the decorative window icons
+            gridItem3 contains the decorative window navigation icons
+            gridItem4 contains the decorative search bar; you can use it as a header or other decorative text
+            gridItem5 contains the decorative menu icon with the a tooltip that links back to my site! (appreciate if you don't remove ^u^)
+            gridItem6 contains the main and houses the majority of the content
+        -->
+        <div id="mainGrid">
+            <div id="gridItem1">
+                <!--
+                    This is the navigation bar. It is a div with links inside of it,
+                    which the css utilizes to scroll horizontally across them once they
+                    reach the max width of the grid it is assigned to. To add more
+                    pages, add a new link to the page, copy and paste the decorative svg,
+                    and make sure to update this on all pages added pages.
+                    * The null link is just to show what multiple pages looks like in the
+                    naviagation bar. You can use this as a template to add more if you are
+                    unfamiliar with html, or you can just delete it.
+                    ---
+                    There is also a class for the active page. Add this to the navigation
+                    link of the current page. By adding the active class, it adds styling
+                    to indicate that it is the active page in the browser.
+
+                    * Please make sure to change the link from "/themes/modern-browser/index.html"
+                    to "index.html". It is written this way in order to not conflict with my
+                    own site when previewing the layouts.
+                -->
+                <div class="navigation">
+                    <a class="active" href="index.html">
+                        Home
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--accColor1)"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                    </a>
+                    <a href="">
+                        Null
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--accColor1)"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div id="gridItem2">
+                <!-- decorative icons -->
+                <div class="windowIcons">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--accColor1)"><path d="M240-120v-80h480v80H240Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--accColor1)"><path d="M160-760v-80h640v80H160Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--accColor1)"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                </div>
+            </div>
+            <div id="gridItem3">
+                <!-- decorative icons -->
+                <div class="navigationIcons">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--accColor1)"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--accColor1)"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--accColor1)"><path d="M480-160q-134 0-227-93t-93-227q0-134 93-227t227-93q69 0 132 28.5T720-690v-110h80v280H520v-80h168q-32-56-87.5-88T480-720q-100 0-170 70t-70 170q0 100 70 170t170 70q77 0 139-44t87-116h84q-28 106-114 173t-196 67Z"/></svg>
+                </div>
+            </div>
+            <div id="gridItem4">
+                <!--
+                    This is the decorative search bar, but you can add your own text if
+                    you would like. The https:// is just there for decorative purposes.
+                    This also contains the marquee tag, which has depreciated, so you
+                    don't have to use it if you don't want to.
+                -->
+                <div class="searchBar">
+                    <p style="margin: 3px;">
+                        https://
+                        <marquee style="width: 90%;" scrollamount="5">
+                            site-header
+                        </marquee>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill=var(--accColor2)><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-350Z"/></svg>
+                    </p>
+                </div>
+            </div>
+            <div id="gridItem5">
+                <!--
+                    This is a decorative icon, but it also contains the tooltip that houses
+                    theme credit. I would appreciate if you do not get rid of this!
+                -->
+                <div class="menuIcons">
+                    <div class="menuTooltip">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--accColor1)"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+                        <span class="tooltipText">
+                            Theme by <a href="https://5493.neocities.org/">5493</a>
+                        </span>
+                </div>
+            </div>
+            </div>
+            <div id="gridItem6">
+                <!--
+                    This is the main of the html page. This houses most of the content
+                    that appears on the site. I have created two different classes:
+                    "title" is for title/headings
+                    "content" is for regular text
+                -->
+                <main>
+                    <div class="title">
+                        <h2> Welcome </h2>
+                    </div>
+                    <div class="content">
+                        <p>
+                            Hello! This is a HTML/CSS theme created by <a href="https://5493.neocities.org/" target="_blank">5493 Arts</a>!
+                            This theme is free to use and modify to fit your needs; just please don't remove the tooltip credit
+                            (hovering the menu icon)!
+                        </p>
+                        <p>
+                            I have annotated the code in this  to explain certain things to better your
+                            understanding of how it is set up. I would highly recommend that you customize this
+                            theme to your liking; to learn more about HTML/CSS, please refer to a source like
+                            <a href="https://www.w3schools.com/" target="_blank">W3 Schools</a> or
+                            <a href="https://developer.mozilla.org/en-US/" target="_blank">MDN Web Docs</a>.
+                        </p>
+                        <p>
+                            This theme is built with grids. If you are unfamiliar with grids, please
+                            check out a source like <a href="https://www.w3schools.com/css/css_grid.asp" target="_blank">W3 Schools</a>
+                            explanation of grid layouts.
+                        </p>
+                        <p>
+                            This theme uses <a href="https://fonts.google.com/specimen/Inter?query=inter&stroke=Sans+Serif&sort=popularity">
+                            Inter</a>, a Google Font that is 100% free to use. The stylesheet utilizes the Google Fonts
+                            CSS API, so you do not have to download the font to use it! This layout also utilizes the svg icons
+                            available on Google Fonts, therefore the icons work the same way.
+                        </p>
+                        <p>
+                            This theme is <span style="font-weight: 600; font-style: italic;">not</span>
+                            mobile responsive. Due to the way the decorative icons are positioned, it would
+                            be difficult to make it mobile responsive with pure html/css. Therefore, I suggest
+                            that you urge the viewers of your site to view it on a desktop device.
+                        </p>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </body>
+</html>
